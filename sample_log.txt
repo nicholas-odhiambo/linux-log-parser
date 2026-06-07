@@ -1,0 +1,7 @@
+2026-06-01 08:15:00 INFO System started
+2026-06-01 09:20:00 WARNING Disk usage at 80%
+2026-06-02 10:05:00 ERROR Database connection failed
+2026-06-02 11:30:00 INFO User login successful
+2026-06-03 14:15:00 ERROR Failed to send email
+2026-06-04 16:45:00 WARNING Memory usage high
+2026-06-05 18:00:00 INFO Backup completed

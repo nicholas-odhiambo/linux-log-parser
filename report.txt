@@ -1,0 +1,10 @@
+
+Linux Log summary report
+========================
+
+Date Range: 
+2026-06-01 to 2026-06-03
+
+INFO: 2
+WARNING: 1
+ERROR: 1

@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import argparse 
 from datetime import datetime
 
@@ -37,8 +35,47 @@ except ValueError:
 
 ## read log files 
 try:
-    with open("/var/log/cron", "r") as file:
+    with open("sample_log.txt", "r") as file:
         logs = file.readlines()
 except FileNotFoundError:
     print('File not found')
     exit(1)
+
+## count log levels 
+counts = {
+    "INFO": 0,
+    "WARNING": 0,
+    "ERROR": 0
+}
+for line in logs: 
+    timestamp = line[:19]
+    log_date = datetime.strptime(
+        timestamp,
+        "%Y-%m-%d %H:%M:%S"
+    )
+    if start_date <= log_date <= end_date:
+        if "INFO" in line:
+            counts["INFO"] += 1
+        elif "WARNING" in line:
+            counts["WARNING"] +=1
+        elif "ERROR" in line:
+            counts["ERROR"] +=1
+
+## generate report 
+report =f"""
+Linux Log summary report
+========================
+
+Date Range: 
+{args.start_date} to {args.end_date}
+
+INFO: {counts["INFO"]}
+WARNING: {counts["WARNING"]}
+ERROR: {counts["ERROR"]}
+"""
+
+with open ("report.txt", "w") as report_file:
+    report_file.write(report)
+
+
+print(report)
